@@ -1,9 +1,9 @@
-# Title of Your Project
+# Team Ramen - Graph Applications Problems
 
-**CISC320 Spring 2023 Lesson 14 - Graph Applications**
+**CISC320 Spring 2023 Lesson 19 - Graph Applications**
 
 Group Members:
-* First member (email)
+* Galen Nare (gnare@udel.edu)
 * Second member (email)
 * Third member (email)
 * Fourth member (email)
@@ -30,7 +30,17 @@ import networkx as nx
 >  * Input:
 >  * Output:
 
-**Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/MST]
+# Minimally connecting paths between University buildings
+
+**Informal Description**: We have a network of buildings at some university with potential paths
+(and the cost to build those paths), we want to find the set of paths that connects all of the buildings
+on campus while using as little resources as possible.
+
+> **Formal Description**:
+>  * Input:
+>  * Output:
+
+**Graph Problem/Algorithm**: MST -- Kruskal's Algorithm
 
 
 **Setup code**:
