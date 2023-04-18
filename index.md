@@ -68,7 +68,8 @@ pp.pprint(str(g))
 
 **Visualization**:
 
-![Image goes here](Relative image filename goes here)
+"Before" graph (weights are hidden to prevent cluttering)
+![before](images/kruskals_buildings_before.png)
 
 **Solution code:**
 
