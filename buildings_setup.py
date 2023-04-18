@@ -9,11 +9,11 @@ buildings = ["Registrar's Office", "Student Center", "Library", "Cashier's Offic
              "Greenhouse", "Campus Security"]
 
 g = nx.Graph()
-for building in buildings:
-    g.add_node(building)
-    for other in buildings:
-        if other is not building:
-            g.add_edge(building, other, weight=((hash(building) + hash(other)) % 21) + 1)
+for i in range(len(buildings)):
+    g.add_node(buildings[i])
+    for j in range(i, len(buildings)):
+        if buildings[j] is not buildings[i]:
+            g.add_edge(buildings[i], buildings[j], weight=((hash(buildings[i]) + hash(buildings[j])) % 21) + 1)
 
 pp = PrettyPrinter(indent=4, width=80)
 pp.pprint(str(g))

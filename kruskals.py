@@ -11,15 +11,6 @@ class Edge(tuple):
         return self
 
 
-class Graph():
-    def __init__(self, nodes: list[Vertex], edges: list[Edge]):
-        self.nodes = nodes
-        self.edges = edges
-
-    def get_weight(self, edge: Edge) -> list[int]:
-        return edge.weight
-
-
 class DisjointSets:
     def __init__(self, nodes: list[Vertex]):
         self.parents = {}
@@ -39,10 +30,10 @@ class DisjointSets:
         return left_root != right_root
 
 
-def kruskals_algorithm(graph: Graph) -> list[Edge]:
-    forest = DisjointSets(graph.nodes)
-    mst: List[Edge] = []
-    edges: List[Edge] = sorted(graph.edges, key=graph.get_weight)
+def kruskals_algorithm(graph: nx.Graph) -> list[Edge]:
+    forest = DisjointSets(graph.nodes.values().)
+    mst: list[Edge] = []
+    edges: list[Edge] = sorted(graph.edges, key=graph.get_weight)
     c = 1
     for left, right in edges:
         result = forest.union(left, right)
