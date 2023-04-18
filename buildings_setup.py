@@ -13,7 +13,7 @@ for i in range(len(buildings)):
     g.add_node(buildings[i])
     for j in range(i, len(buildings)):
         if buildings[j] is not buildings[i]:
-            g.add_edge(buildings[i], buildings[j], weight=((hash(buildings[i]) + hash(buildings[j])) % 21) + 1)
+            g.add_edge(buildings[i], buildings[j], weight=((hash(buildings[i]) + hash(buildings[j])) % 20) + 1)
 
 pp = PrettyPrinter(indent=4, width=80)
 pp.pprint(str(g))
