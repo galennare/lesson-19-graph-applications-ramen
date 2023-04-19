@@ -20,4 +20,4 @@ You should NOT use the web interface to edit files directly on the main branch. 
 
 Failure to follow this workflow will result in severe penalties, including the possible rejection of your submission.
 
-All commits should be under your own username. Commiting work under someone else's name means they will get the credit, and you will get nothing (and therefore earn a failing grade!).
+All commits should be under your own username. Committing work under someone else's name means they will get the credit, and you will get nothing (and therefore earn a failing grade!).
