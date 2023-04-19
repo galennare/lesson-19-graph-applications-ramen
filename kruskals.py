@@ -2,10 +2,16 @@ import networkx as nx
 
 
 class Vertex(str):
+    """
+        Wrapper class for vertices
+    """
     pass
 
 
 class DisjointSets:
+    """
+        Disjoint sets implementation from lesson 18
+    """
     def __init__(self, nodes: list[Vertex]):
         self.parents = {}
         for node in nodes:
@@ -25,6 +31,10 @@ class DisjointSets:
 
 
 def kruskals_algorithm(graph: nx.Graph) -> list[tuple]:
+    """
+        Kruskal's Algorithm implementation adapted from lesson 18, takes in a networkx graphs and returns a list of
+        networkx compatible edges of the Minimum-Spanning Tree.
+    """
     vertices = [Vertex(node) for node in graph]
     forest = DisjointSets(vertices)
     mst = []
