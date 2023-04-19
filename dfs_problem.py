@@ -7,5 +7,5 @@ if __name__ == '__main__':
     cw.pp.pprint(sp)
     cw.g.clear_edges()
     for edge in sp:
-        cw.g.add_edge(edge[0], edge[1], weight=edge[2]['weight'])
-    viz.draw_graph(cw.g, show_edge_weights=True)
+        cw.g.add_edge(edge[0], edge[1])
+    viz.draw_graph(cw.g)
