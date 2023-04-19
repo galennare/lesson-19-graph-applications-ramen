@@ -63,12 +63,11 @@ for i in range(len(buildings)):
 
 pp = PrettyPrinter(indent=4, width=80)
 pp.pprint(str(g))
-
 ```
 
 **Visualization**:
 
-"Before" graph (weights are hidden to prevent cluttering)
+"Before" graph (weights are represented by edge thickness, ranging from 1 to 20)
 ![before](images/kruskals_buildings_before.png)
 
 **Solution code:**
