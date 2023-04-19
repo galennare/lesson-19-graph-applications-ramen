@@ -1,5 +1,4 @@
 import networkx as nx
-
 from pprint import *
 
 websites = [
@@ -10,14 +9,11 @@ websites = [
     "Study Abroad and International Programs", "Library and Research Resources", "Technology and Computing Services",
     "Alumni Relations and Giving", "Campus Safety and Security", "Arts and Culture on Campus", "Faculty and Staff Directory"]
 
+g = nx.complete_graph(len(websites), create_using=nx.Graph())
 
-g = nx.Graph()
-for i in range(len(websites)):
-    g.add_node(websites[i])
-    for j in range(i, len(websites)):
-        if websites[j] is not websites[i]:
-            g.add_edge(websites[i], websites[j], weight=(
-                (hash(websites[i]) + hash(websites[j])) % 20) + 1)
+# Set the node labels as the websites
+node_labels = {i: website for i, website in enumerate(websites)}
+g = nx.relabel_nodes(g, node_labels)
 
 pp = PrettyPrinter(indent=4, width=80)
 pp.pprint(str(g))
