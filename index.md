@@ -4,7 +4,7 @@
 
 Group Members:
 * Galen Nare (gnare@udel.edu)
-* Second member (email)
+* Dylan Giletto (dgiletto@udel.edu)
 * Third member (email)
 * Fourth member (email)
 
@@ -181,3 +181,97 @@ With Kruskal's Algorithm we are able to find the least expensive way to connect 
 University buildings on this wired Internet network. This setup can find the solution for this type
 of problem quickly, with any number of "buildings to connect". This could help network engineers
 prototype a cost-effective solution for Universities or other multi-building campuses.
+
+# Bipartite Seating Chart for the Coding Club
+
+**Informal Description**: Rob, the president of the coding club, wants to set the seating for the first meeting of the coding club
+so that the boys and girls are all interweaved with eachother allowing for more interactions and frienships to develop through
+the club
+
+> **Formal Description**:
+>  * Input: A set of members of the club (20 nodes), with each node stemming out for 4 other members of the club, representing
+    possible connections that can be made from the seating chart.
+>  * Output: Whether the graph is bipartite or not dependent on boys and girls
+
+**Graph Problem/Algorithm**: BFS
+
+**Setup Code**:
+
+```python
+import networkx as nx
+
+from pprint import *
+
+boys = ["Rob", "Matthew", "Tom", "Kyle", "Jared", "Alex", "Giovanni", "Tyler", "Brett", "Bart"]
+girls = ["Amber", "Alisson", "Paige", "Nicole", "Kelsey", "Ashley", "Anna", "Shannon", "Jamie", "Emma"]
+
+g = nx.Graph()
+
+g.add_nodes_from(boys)
+g.add_nodes_from(girls)
+for i in range(len(boys)):
+    for j in range(1 , 5):
+        if not g.has_edge(boys[i], girls[(i + j) % len(girls)]):
+            g.add_edge(boys[i],girls[(j + i) % len(girls)])
+
+pp = PrettyPrinter(indent=4, width=80)
+pp.pprint(str(g))
+```
+
+**Visualization**
+Proposed seating chart from Rob
+![Proposed_Seats](images/BFS_club_seating.png)
+
+**Solution Code:**
+
+```python
+import matplotviz as viz
+import club_setup as cs
+
+import networkx as nx
+
+members = ["Rob", "Matthew", "Tom", "Kyle", "Jared", "Alex", "Giovanni", "Tyler", "Brett", 
+           "Bart", "Amber", "Alisson", "Paige", "Nicole", "Kelsey", "Ashley", "Anna", "Shannon", "Jamie", "Emma"]
+boys = ["Rob", "Matthew", "Tom", "Kyle", "Jared", "Alex", "Giovanni", "Tyler", "Brett", "Bart"]
+girls = ["Amber", "Alisson", "Paige", "Nicole", "Kelsey", "Ashley", "Anna", "Shannon", "Jamie", "Emma"]
+
+def is_bipartite(graph: nx.Graph, start: any) -> bool:
+    queue = []
+    queue.append(start)
+    visited = []
+
+    while queue:
+        u = queue.pop()
+        # Return false is there is a self loop
+        if (graph.has_edge(u,u)):
+            return False
+        
+        for v in range(len(graph.nodes)):
+            if graph.has_edge(u,members[v]) and members[v] not in visited:
+                if u in boys and members[v] in girls:
+                    visited.append(members[v])
+                    queue.append(members[v])
+                elif u in girls and members[v] in boys:
+                    visited.append(members[v])
+                    queue.append(members[v])
+                elif u in boys and members[v] in boys:
+                    return False
+                elif u in girls and members[v] in girls:
+                    return False
+    return True
+
+if __name__ == "__main__":
+    viz.draw_graph(cs.g, show_edge_weights=False)
+    print(BFS.is_bipartite(cs.g, "Rob"))
+```
+
+**Output**
+
+If the graph is bipartite or not
+```python
+True
+```
+
+**Interpretation of the Results**:
+
+Using a Breadth First Search on the seating chart (graph) we can prove if the seat arrangment Rob proposed is bipartite or not. Since the result was True, we know that the proposed seating arrangement would achieve the goal of creating interactions between the girls and the boys of the club, and is truly bipartite.
