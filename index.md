@@ -30,7 +30,7 @@ import networkx as nx
 >  * Input: A graph where each edge weight represents the distance between buildings.
 >  * Output: Prints the shortest path with its length and the nodes visited in order.
 
-**Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/MST]
+**Graph Problem/Algorithm**: Djikstra's Algorithm
 
 
 **Setup code**:

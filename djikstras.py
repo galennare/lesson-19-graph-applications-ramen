@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import djikstras_setup
 import heapq
 import pprint
 
