@@ -3,9 +3,9 @@
 **CISC320 Spring 2023 Lesson 14 - Graph Applications**
 
 Group Members:
-* Daniel Yang (daniely@udel.edu)
+* First member (email)
 * Second member (email)
-* Third member (email)
+* Daniel Yang (daniely@udel.edu)
 * Fourth member (email)
 
 Description of project
@@ -24,7 +24,7 @@ import networkx as nx
 
 # First Problem Title
 
-**Informal Description**: 
+**Informal Description**: The University of Mars has an important task for you. Since Mars is a relatively new planet to colonize, we need to be efficient with land. We are asking you to find the shortest pathing through our graph of the buildings so that we can efficiently reserve land to build our campus.
 
 > **Formal Description**:
 >  * Input:
