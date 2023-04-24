@@ -24,7 +24,7 @@ import networkx as nx
 
 # The Shortest Path on Campus
 
-**Informal Description**: The University of Mars has an important task for you. Since Mars is a relatively new planet to colonize, we need to be efficient with land. We are asking you to find the shortest pathing through our graph of the buildings so that we can efficiently reserve land to build our campus.
+**Informal Description**: The University of Mars has an important task for you. Since Mars is a relatively new planet to colonize, we need to be efficient with land. We are asking you to find the shortest pathing through our graph of the buildings so that we can efficiently reserve land to build our campus. Start from the Registrar's Office and end at the Student Gym.
 
 > **Formal Description**:
 >  * Input: A graph where each edge weight represents the distance between buildings.
