@@ -22,13 +22,13 @@ $> pip install networkx
 import networkx as nx
 ```
 
-# First Problem Title
+# The Shortest Path on Campus
 
 **Informal Description**: The University of Mars has an important task for you. Since Mars is a relatively new planet to colonize, we need to be efficient with land. We are asking you to find the shortest pathing through our graph of the buildings so that we can efficiently reserve land to build our campus.
 
 > **Formal Description**:
->  * Input:
->  * Output:
+>  * Input: A graph where each edge weight represents the distance between buildings.
+>  * Output: Prints the shortest path with its length and the nodes visited in order.
 
 **Graph Problem/Algorithm**: [DFS/BFS/SSSP/APSP/MST]
 
