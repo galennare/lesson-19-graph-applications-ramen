@@ -3,8 +3,8 @@
 **CISC320 Spring 2023 Lesson 14 - Graph Applications**
 
 Group Members:
-* First member (email)
-* Second member (email)
+* Galen Nare (gnare@udel.edu)
+* Dylan Giletto (dgiletto@udel.edu)
 * Daniel Yang (daniely@udel.edu)
 * Fourth member (email)
 
