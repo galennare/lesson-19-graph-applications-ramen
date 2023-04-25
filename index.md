@@ -364,7 +364,8 @@ plt.show()
 
 **Solution code:**
 
-```def solution (G: nx.Graph) -> nx.Graph:
+```
+def solution (G: nx.Graph) -> nx.Graph:
     solution = nx.single_source_dijkstra(G, "Registrar's Office", "Student Gym")
     print("The shortest path from Registrar's Office to Student Gym is: ")
     print(solution)
