@@ -290,7 +290,8 @@ We are asking you to find the shortest pathing between the Registrar's Office an
 
 **Setup code**:
 
-```G = nx.Graph()
+```python
+G = nx.Graph()
 
 nodes = [["Registrar's Office", 1, 1],["Student Center", 1, 8],["Library", 2, 4],["Cashier's Office", 3, 1],["Basketball Arena", 3, 9],
          ["Football Stadium", 2, 6],["Health Center", 4, 2],["Dining Hall", 4, 5],["Residence Hall", 5, 8],["Tech Support Center", 5, 2],
