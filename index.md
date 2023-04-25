@@ -371,7 +371,8 @@ solution(G)
 
 **Output**
 
-```The shortest path from Registrar's Office to Student Gym is: 
+```
+The shortest path from Registrar's Office to Student Gym is: 
 (180, ["Registrar's Office", 'Student Center', "Cashier's Office", 'Football Stadium', 'Health Center', 'Residence Hall', 'Biology Lab', 'Machine Shop', 'Lecture Hall', 'Student Gym'])
 ```
 
