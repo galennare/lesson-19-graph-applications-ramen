@@ -80,64 +80,14 @@ ranging from 1 to 20; using `matplotlib`:
 ```python
 import matplotviz as viz
 import buildings_setup as bs
-
 import networkx as nx
 
-
-class Vertex(str):
-    """
-        Wrapper class for vertices
-    """
-    pass
-
-
-class DisjointSets:
-    """
-        Disjoint sets implementation from lesson 18
-    """
-    def __init__(self, nodes: list[Vertex]):
-        self.parents = {}
-        for node in nodes:
-            self.parents[node] = node
-
-    def find(self, current: Vertex) -> Vertex:
-        while self.parents[current] != current:
-            current = self.parents[current]
-        return current
-
-    def union(self, left: Vertex, right: Vertex):
-        left_root = self.find(left)
-        right_root = self.find(right)
-        if left_root != right_root:
-            self.parents[right_root] = left_root
-        return left_root != right_root
-
-
-def kruskals_algorithm(graph: nx.Graph) -> list[tuple]:
-    """
-        Kruskal's Algorithm implementation adapted from lesson 18, takes in a networkx graphs and returns a list of
-        networkx compatible edges of the Minimum-Spanning Tree.
-    """
-    vertices = [Vertex(node) for node in graph]
-    forest = DisjointSets(vertices)
-    mst = []
-    edges = sorted([edge for edge in graph.edges.data()], key=lambda edge: edge[2]['weight'])
-    c = 1
-    for edge in edges:
-        left, right = edge[:2]
-        result = forest.union(left, right)
-        if result:
-            mst.append((left, right, edge[2]))
-        print(str(c), str(tuple((left, right))), result, forest.parents, '\n')  # Debug statement for alg, comment for less output
-        c += 1
-    return mst
-
-
 if __name__ == '__main__':
-    mst = kruskals_algorithm(bs.g)
+    mst = nx.minimum_spanning_tree(bs.g, algorithm="kruskal")
     bs.pp.pprint(mst)
     bs.g.clear_edges()
-    for edge in mst:
+    for edge in mst.edges(data=True):
+        print(edge)
         bs.g.add_edge(edge[0], edge[1], weight=edge[2]['weight'])
     viz.draw_graph(bs.g, show_edge_weights=True)
 ```
@@ -146,30 +96,30 @@ if __name__ == '__main__':
 
 Edges selected for the Minimum Spanning Tree calculated by Kruskal's Algorithm:
 ```python
-[   ("Registrar's Office", 'Football Stadium', {'weight': 1}),
-    ("Registrar's Office", 'Health Center', {'weight': 1}),
-    ("Registrar's Office", 'Biology Lab', {'weight': 1}),
-    ('Student Center', 'Football Stadium', {'weight': 1}),
-    ('Library', 'Residence Hall', {'weight': 1}),
-    ('Basketball Arena', 'Physics Lab', {'weight': 1}),
-    ('Basketball Arena', 'Machine Shop', {'weight': 1}),
-    ('Football Stadium', 'Chemistry Lab', {'weight': 1}),
-    ('Dining Hall', 'Residence Hall', {'weight': 1}),
-    ('Residence Hall', 'Campus Security', {'weight': 1}),
-    ('Student Store', 'Physics Lab', {'weight': 1}),
-    ('Testing Center', 'Business Building', {'weight': 1}),
-    ('Computing Lab', 'Conference Center', {'weight': 1}),
-    ('Arts Building', 'Conference Center', {'weight': 1}),
-    ('Library', "Cashier's Office", {'weight': 2}),
-    ('Library', 'Greenhouse', {'weight': 2}),
-    ('Student Gym', 'Residence Hall', {'weight': 2}),
-    ('Residence Hall', 'Tech Support Center', {'weight': 2}),
-    ('Residence Hall', 'Lecture Hall', {'weight': 2}),
-    ('Residence Hall', 'Music Hall', {'weight': 2}),
-    ('Physics Lab', 'Computing Lab', {'weight': 2}),
-    ("Registrar's Office", 'Basketball Arena', {'weight': 3}),
-    ('Library', 'Business Building', {'weight': 3}),
-    ('Football Stadium', 'Residence Hall', {'weight': 3})]
+("Registrar's Office", 'Library', {'weight': 1})
+("Registrar's Office", 'Testing Center', {'weight': 1})
+("Registrar's Office", 'Conference Center', {'weight': 1})
+("Registrar's Office", 'Student Gym', {'weight': 4})
+('Student Center', 'Business Building', {'weight': 1})
+('Student Center', 'Biology Lab', {'weight': 2})
+('Library', 'Football Stadium', {'weight': 1})
+('Library', 'Physics Lab', {'weight': 1})
+("Cashier's Office", 'Residence Hall', {'weight': 1})
+("Cashier's Office", 'Student Store', {'weight': 3})
+('Student Gym', 'Dining Hall', {'weight': 1})
+('Student Gym', 'Tech Support Center', {'weight': 1})
+('Student Gym', 'Health Center', {'weight': 2})
+('Student Gym', 'Basketball Arena', {'weight': 3})
+('Student Gym', 'Machine Shop', {'weight': 3})
+('Dining Hall', 'Chemistry Lab', {'weight': 1})
+('Dining Hall', 'Lecture Hall', {'weight': 1})
+('Dining Hall', 'Arts Building', {'weight': 2})
+('Residence Hall', 'Business Building', {'weight': 2})
+('Student Store', 'Arts Building', {'weight': 1})
+('Student Store', 'Greenhouse', {'weight': 1})
+('Student Store', 'Computing Lab', {'weight': 2})
+('Biology Lab', 'Music Hall', {'weight': 1})
+('Music Hall', 'Campus Security', {'weight': 1})
 ```
 
 Visualization of the MST (edge weights visualized with line thickness):
