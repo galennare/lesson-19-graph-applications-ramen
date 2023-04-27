@@ -240,7 +240,12 @@ We are asking you to find the shortest pathing between the Registrar's Office an
 
 **Setup code**:
 
-```G = nx.Graph()
+```python
+import networkx as nx
+from pprint import *
+import matplotlib.pyplot as plt
+
+G = nx.Graph()
 
 nodes = [["Registrar's Office", 1, 1],["Student Center", 1, 8],["Library", 2, 4],["Cashier's Office", 3, 1],["Basketball Arena", 3, 9],
          ["Football Stadium", 2, 6],["Health Center", 4, 2],["Dining Hall", 4, 5],["Residence Hall", 5, 8],["Tech Support Center", 5, 2],
@@ -309,7 +314,8 @@ plt.show()
 
 **Solution code:**
 
-```def solution (G: nx.Graph) -> nx.Graph:
+```
+def solution (G: nx.Graph) -> nx.Graph:
     solution = nx.single_source_dijkstra(G, "Registrar's Office", "Student Gym")
     print("The shortest path from Registrar's Office to Student Gym is: ")
     print(solution)
@@ -320,7 +326,8 @@ solution(G)
 
 **Output**
 
-```The shortest path from Registrar's Office to Student Gym is: 
+```
+The shortest path from Registrar's Office to Student Gym is: 
 (180, ["Registrar's Office", 'Student Center', "Cashier's Office", 'Football Stadium', 'Health Center', 'Residence Hall', 'Biology Lab', 'Machine Shop', 'Lecture Hall', 'Student Gym'])
 ```
 
